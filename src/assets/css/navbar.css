@@ -1,0 +1,126 @@
+header{
+    /* color: red; */
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    width: 100%;
+    padding-top: 20px;
+}
+header span {
+    text-align: center;
+    width: 30%;
+}
+nav{
+    margin-right: 60px;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.navlinks{
+    justify-self: flex-start;
+}
+.navlinks a{
+    font-size: 15px;
+    color: gray;
+    text-decoration: none;
+    margin: 0 20px;
+}
+.navlinks a:first-child{
+    color: white;
+    position: relative;
+}
+.navlinks a:first-child::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: #6d41ee;
+    left: 0;
+    bottom: -6px;
+    border-radius: 12px;
+}
+.reglinks{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.reglinks a{
+    color: whitesmoke;
+    text-decoration: none;
+    font-size: 15px;
+}
+.reglinks a:last-child{
+    color: white;
+    padding: 15px 25px;
+    font-weight: 700;
+    background-color: #6d41ee;
+    border-radius: 18px;
+    margin-left: 50px;  
+}
+.menutoggler{
+    margin-right: 20px;
+}
+
+
+
+.mobile_nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 260px;
+    height: 200px;
+    padding: 1.4em 1em;
+    margin: 0 auto;
+    border: 1px solid;
+    margin-top: 10px ;   
+    background-color: rgba(255,255,255,0.05);
+	border-radius: 18px;
+	box-shadow: 20px 20px 40px -6px rgba(0,0,0,0.4);
+	backdrop-filter: blur(18px);
+	-webkit-backdrop-filter:blur(18px);
+	border:1px solid rgba(255,255,255,0.1);
+    position:absolute;
+    top: -30rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index:10000;
+}
+.show_nav{
+    top: 2rem;
+    transition: .5s;
+}
+.close_nav{
+    top: -30rem;
+    transition: .5s;
+}
+.mobile_nav a{
+    font-size: 15px;
+    color: whitesmoke;
+    text-decoration: none;
+    margin-top: 14px;
+}
+.mobile_nav .mobile_reglinks{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.mobile_nav .mobile_reglinks a{
+    color: whitesmoke;
+    text-decoration: none;
+    font-size: 15px;
+}
+.mobile_nav .mobile_reglinks a:last-child{
+    color: white;
+    padding: 15px 25px;
+    font-weight: 700;
+    background-color: #6d41ee;
+    border-radius: 18px;
+}
+@media(max-width:770px){
+    nav{
+        display: none;
+    }
+}

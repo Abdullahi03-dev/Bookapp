@@ -1,0 +1,94 @@
+.signup{
+    height: 100vh;
+    width: 85%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.signupimage{
+    object-fit: cover;
+    width: 350px;
+    height: 370px;
+}
+.form1{
+    margin-left:4.5rem;
+    display: flex;
+    align-items: center;
+    justify-self: flex-end;
+    flex-direction: column;
+}
+form{
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    flex-direction: column;
+    margin-top: 3.2em;
+    /* padding: 2.5em 0; */
+}
+.form1 h3{
+    text-align: center;
+    font-weight: 700;
+    font-size: 2em;
+    color: #6d41ee;
+}
+.form1 p{
+    color: rgb(211, 196, 196);
+    margin-top: 10px;
+}
+form input{
+    color: white;
+    width: 16rem;
+    padding: 7px 30px;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    background-color: transparent;
+    margin: 15px 0;
+    background: url('../img/user-icon-svgrepo-com.svg') no-repeat;
+    background-size: 20px;
+    padding-left: 30px;
+}
+form input:nth-child(2){
+    background: url('../img/email-1571-svgrepo-com.svg') no-repeat;
+    background-size: 20px;
+    padding-left: 30px;
+}
+form input:nth-child(3){
+    background: url('../img/password-lock-svgrepo-com.svg') no-repeat;
+    background-size: 20px;
+    padding-left: 30px;
+}
+form button{
+    background-color: #6d41ee;
+    color: rgb(211, 196, 196);
+    border: none;
+    outline: none;
+    padding: 10px 22px;
+    border-radius: 19px;
+    margin-top: 1.5em;
+    cursor: pointer;
+}
+form a{
+    color:  rgb(211, 196, 196);
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 5px;
+}
+@media(max-width:770px){
+    .signupimage{
+        display: none;
+    }
+    .form1{
+        margin: 0;
+    }
+    .form1 p{
+        text-align: center;
+    }
+    form button{
+        margin-top: 3.5rem;
+    }
+    form{
+        margin-top: 2rem;
+    }
+}

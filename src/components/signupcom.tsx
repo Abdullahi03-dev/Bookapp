@@ -3,9 +3,68 @@ import '../assets/css/signup.css'
 import ImageComponent from '../components/image'
 import image3 from '../assets/img/download-1.svg'
 import {Link} from 'react-router-dom'
+import { useState } from "react";
+import toast, { Toast } from 'react-hot-toast'
+import { auth, db, createUserWithEmailAndPassword, collection, query, where, getDocs, doc, setDoc } from "../firebase/firebase";
 
 
 const signupcomp=()=>{
+    const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+    // Function to check if the name already exists in Firestore
+    const checkIfNameExists = async (name: string): Promise<boolean> => {
+        const usersRef = collection(db, "users");
+        const q = query(usersRef, where("name", "==", name));
+        const querySnapshot = await getDocs(q);
+        return !querySnapshot.empty; // Returns true if name exists
+      };
+
+       // Function to handle sign-up
+  const handleSignup = async (e: React.FormEvent) => {
+    // if (error) {
+    // }
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      // Check if the name already exists in Firestore
+      const nameExists = await checkIfNameExists(name);
+      if (nameExists) {
+        setError("This name is already taken. Please choose another one.");
+        toast.error('This name is already taken. Please choose another one.')
+        setLoading(false);
+        return;
+      }
+
+      // Create user with email and password in Firebase Auth
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // Store the user details in Firestore
+      await setDoc(doc(db, "users", user.uid), {
+        name: name,
+        email: email,
+        userId: user.uid,
+      });
+
+      console.log("User signed up successfully!");
+      toast.success("User signed up successfully!")
+
+    } catch (error: any) {
+      setError(error.message);
+    }
+    if(error){
+      toast.error(error)
+
+    }
+
+    setLoading(false);
+  };
     return(
         <>
     <section className='signup'>
@@ -15,12 +74,13 @@ const signupcomp=()=>{
         <div className='form1'>
         <h3>Save Your Account</h3>
         <p>Open an account to meet other books enthusiasts like you</p>
-        <form>
+       
+        <form onSubmit={handleSignup}>
 
-            <input type='text' placeholder='Full Name' />
-            <input type='email' placeholder='Email'/>
-            <input type='password' placeholder='Password'/>
-            <button>Sign Up</button>
+            <input type='text' placeholder='Full Name' value={name} onChange={(e) => setName(e.target.value)} required  />
+            <input type='email' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} required/>
+            <input type='password' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} required/>
+            <button disabled={loading}>{loading ? "Signing Up..." : "Sign Up"}</button>
             <Link to="">Already have an account?Login</Link>
     </form>
         </div>

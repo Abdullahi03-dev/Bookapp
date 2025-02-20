@@ -36,6 +36,9 @@ form{
     color: rgb(211, 196, 196);
     margin-top: 10px;
 }
+/* form input[type="text"]{
+    margin-left: 50px;
+} */
 form input{
     color: white;
     width: 16rem;
@@ -52,6 +55,8 @@ form input{
 form input:nth-child(2){
     background: url('../img/email-1571-svgrepo-com.svg') no-repeat;
     background-size: 20px;
+    background-position: left;
+    align-self: flex-end;
     padding-left: 30px;
 }
 form input:nth-child(3){
@@ -64,7 +69,7 @@ form button{
     color: rgb(211, 196, 196);
     border: none;
     outline: none;
-    padding: 10px 22px;
+    padding: 13px 28px;
     border-radius: 19px;
     margin-top: 1.5em;
     cursor: pointer;
@@ -86,7 +91,10 @@ form a{
         text-align: center;
     }
     form button{
-        margin-top: 3.5rem;
+        margin-top: 1.5rem;
+    }
+    form a{
+        margin-top: 15px;
     }
     form{
         margin-top: 2rem;

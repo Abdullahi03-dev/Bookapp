@@ -59,6 +59,7 @@ nav{
     margin-left: 50px;  
 }
 .menutoggler{
+    visibility: hidden;
     margin-right: 20px;
 }
 
@@ -88,7 +89,7 @@ nav{
     z-index:10000;
 }
 .show_nav{
-    top: 2rem;
+    top: 4.6rem;
     transition: .5s;
 }
 .close_nav{
@@ -122,5 +123,8 @@ nav{
 @media(max-width:770px){
     nav{
         display: none;
+    }
+    .menutoggler{
+        visibility: visible;
     }
 }

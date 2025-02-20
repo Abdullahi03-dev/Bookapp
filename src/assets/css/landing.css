@@ -79,7 +79,7 @@
         flex-wrap: wrap-reverse;
     }
     .landing2 .card {
-        margin: 1em 0;
+        margin: 1.4em 0;
     }
     .landing1 h1{
         padding: 0 30px;
@@ -90,7 +90,8 @@
         width: 90%;
     }
     .banner_img{
-        margin-top: 1em;
+        margin-bottom: 1.1em;
+        margin-top: 1.8em;
     }
     .ctas{
         flex-direction: column;

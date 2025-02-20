@@ -4,11 +4,16 @@ import logo from '../assets/img/download-2.svg'
 import cancel from '../assets/img/cancel.svg'
 import menu from '../assets/img/menu.svg'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 const navbar =()=>{
     const [open ,setOpen]=useState<boolean>(false)
 
     const showNav=()=>{
         setOpen(!open)
+    }
+    const navigate=useNavigate()
+    const toSignup=()=>{
+        navigate('../pages/signup')
     }
     return(
          <>
@@ -18,7 +23,7 @@ const navbar =()=>{
             <a href="">CONTACT</a>
             <div className="mobile_reglinks">
             <a href='#'>Sign in</a>
-            <a href='#'>Join now</a>
+            <a href='#' onClick={toSignup}>Join now</a>
             </div>
          </div>
     <header>
@@ -37,7 +42,7 @@ const navbar =()=>{
 
             <div className="reglinks">
             <a href='#'>Sign in</a>
-            <a href='#'>Join now</a>
+            <a href='#' onClick={toSignup}>Join now</a>
 
             </div>
         </nav>

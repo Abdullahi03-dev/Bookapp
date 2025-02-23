@@ -4,7 +4,7 @@ import ImageComponent from '../components/image'
 import image3 from '../assets/img/download-1.svg'
 import {Link} from 'react-router-dom'
 import { useState } from "react";
-import toast, { Toast } from 'react-hot-toast'
+import toast from 'react-hot-toast';
 import { auth, db, createUserWithEmailAndPassword, collection, query, where, getDocs, doc, setDoc } from "../firebase/firebase";
 
 

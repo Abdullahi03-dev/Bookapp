@@ -5,10 +5,10 @@ import image3 from '../assets/img/download-1.svg'
 import {Link} from 'react-router-dom'
 import { useState } from "react";
 import toast from 'react-hot-toast'
-import { auth, db, createUserWithEmailAndPassword, collection, query, where, getDocs, doc, setDoc } from "../firebase/firebase";
+import { auth, db,signInWithEmailAndPassword, collection, query, where, getDocs} from "../firebase/firebase";
 
 
-const signupcomp=()=>{
+const signincomp=()=>{
     const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -34,26 +34,26 @@ const signupcomp=()=>{
     try {
       // Check if the name already exists in Firestore
       const nameExists = await checkIfNameExists(name);
-      if (nameExists) {
+      if (!nameExists) {
         setError("This name is already taken. Please choose another one.");
-        toast.error('This name is already taken. Please choose another one.')
+        toast.error('Incorrect Username')
         setLoading(false);
         return;
       }
 
       // Create user with email and password in Firebase Auth
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+       userCredential.user;
 
-      // Store the user details in Firestore
-      await setDoc(doc(db, "users", user.uid), {
-        name: name,
-        email: email,
-        userId: user.uid,
-      });
+    //   // Store the user details in Firestore
+    //   await setDoc(doc(db, "users", user.uid), {
+    //     name: name,
+    //     email: email,
+    //     userId: user.uid,
+    //   });
 
       console.log("User signed up successfully!");
-      toast.success("User signed up successfully!")
+      toast.success("User signed in successfully!")
 
     } catch (error: any) {
       setError(error.message);
@@ -72,16 +72,16 @@ const signupcomp=()=>{
             <ImageComponent src={image3} alt='BOOK TRACKER' className='signupimage'/>
         </figure>
         <div className='form1'>
-        <h3>Save Your Account</h3>
-        <p>Open an account to meet other books enthusiasts like you</p>
+        <h3>Log In!</h3>
+        <p>Welcome back to your book dynasty</p>
        
         <form onSubmit={handleSignup}>
 
             <input type='text' placeholder='Full Name' value={name} onChange={(e) => setName(e.target.value)} required  />
             <input type='email' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} required/>
             <input type='password' placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} required/>
-            <button disabled={loading}>{loading ? "Signing Up..." : "Sign Up"}</button>
-            <Link to="../pages/sigin">Already have an account?Login</Link>
+            <button disabled={loading}>{loading ? "Login..." : "Login"}</button>
+            <Link to="../pages/signup">Don't have an Account? Sign Up</Link>
     </form>
         </div>
     </section>
@@ -90,4 +90,4 @@ const signupcomp=()=>{
         </>
         )
 }
-export default signupcomp
+export default signincomp

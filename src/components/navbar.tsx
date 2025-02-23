@@ -15,6 +15,9 @@ const navbar =()=>{
     const toSignup=()=>{
         navigate('../pages/signup')
     }
+    const toSignin=()=>{
+        navigate('../pages/signin')
+    }
     return(
          <>
          <div className={`mobile_nav ${open? 'show_nav':'close_nav'}`}>
@@ -22,7 +25,7 @@ const navbar =()=>{
             <a href="">ABOUT</a>
             <a href="">CONTACT</a>
             <div className="mobile_reglinks">
-            <a href='#'>Sign in</a>
+            <a href='#' onClick={toSignin}>Sign in</a>
             <a href='#' onClick={toSignup}>Join now</a>
             </div>
          </div>
@@ -41,7 +44,7 @@ const navbar =()=>{
             </div>
 
             <div className="reglinks">
-            <a href='#'>Sign in</a>
+            <a href='#' onClick={toSignin}>Sign in</a>
             <a href='#' onClick={toSignup}>Join now</a>
 
             </div>
